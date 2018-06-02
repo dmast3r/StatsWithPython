@@ -20,10 +20,12 @@ otherChildrenCount = 0
 
 for record in table.records:
     if record.outcome == 1 and record.birthord != 'NA': # handle the edge case of getting an inapplicable birth-order
-        if record.birthord == 1:
+        if record.birthord == 1: # if it's the first baby
             firstChildCount += 1
         else:
             otherChildrenCount += 1
 
+# if your implementation is correct then you should be getting 4413 and 4735 as answer.
 print('Total of count of Live Births for the child is {} and for rest of the children it\'s {}'
       .format(firstChildCount, otherChildrenCount))
+
