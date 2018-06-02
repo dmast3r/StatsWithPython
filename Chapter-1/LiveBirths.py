@@ -11,3 +11,19 @@ table.ReadRecords()
 # now for each record, check if the outcome instance is set to 1(which indicates Live Birth).
 # If you have implemented the below part correctly you should get output equals to 9148
 print('Total count of Live Births is {}'.format(sum(1 for record in table.records if record.outcome == 1)))
+
+
+# -------------------- Solution to question 3 : Categorise Live births into first child and others ------------------- #
+# In this part we are supposed to count the Live Births separately for the first and the rest of the Children
+firstChildCount = 0
+otherChildrenCount = 0
+
+for record in table.records:
+    if record.outcome == 1 and record.birthord != 'NA': # handle the edge case of getting an inapplicable birth-order
+        if record.birthord == 1:
+            firstChildCount += 1
+        else:
+            otherChildrenCount += 1
+
+print('Total of count of Live Births for the child is {} and for rest of the children it\'s {}'
+      .format(firstChildCount, otherChildrenCount))
